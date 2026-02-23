@@ -1,33 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import SectionWithoutPhoto from './components/pageComponents/PageLayout/SectionWithoutPhoto/SectionWithoutPhoto'
+import PageHeader from './components/pageComponents/PageHeader/PageHeader'
+import HeroSection from './components/pageComponents/PageLayout/HeroSection/HeroSection'
+import PageLayout from './components/pageComponents/PageLayout/PageLayout'
+import PartnersSection from './components/pageComponents/PageLayout/PartnersSection/PartnersSection'
+import SectionWithPhoto from './components/pageComponents/PageLayout/SectionWithPhoto/SectionWithPhoto'
+
+import data from './data/data';
+import PriceSection from './components/pageComponents/PageLayout/PriceSection/PriceSection'
+import FAQSection from './components/pageComponents/PageLayout/FAQSection/FAQSection'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <PageHeader/>
+    <PageLayout>
+      <HeroSection 
+        headerProps={data.heroSectionItems.header}
+      />
+      <PartnersSection 
+        title={data.partnersSectionItems.title}
+      />
+      <SectionWithoutPhoto
+        headerProps={data.sectionWithoutPhotoItems.header}
+        qualityList={data.sectionWithoutPhotoItems.qualityList}
+      />
+      <SectionWithPhoto 
+        headerProps={data.designersSectionItems.header}
+        qualityList={data.designersSectionItems.qualityList}
+      />
+      <SectionWithPhoto 
+        headerProps={data.licensingSectionItems.header}
+        qualityList={data.licensingSectionItems.qualityList}
+      />
+      <PriceSection 
+        headerProps={data.priceSectionItems.header} 
+        billTypes={data.priceSectionItems.billTypes}
+        planList={data.priceSectionItems.planList}
+      />
+      <FAQSection
+        headerProps={data.faqSectionItems.header}
+        listData={data.faqSectionItems.questionsList}
+      />
+    </PageLayout>
     </>
   )
 }
